@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+		<!-- Replace the defaults files with links from https://cdnjs.com/libraries/reveal.js/4.1.0 -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/theme/black.min.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/monokai.min.css" id="highlight-theme">
+	</head>
+
+	<!-- Presentation content -->
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Each slide is its own <section>. This is the first slide. -->
+				<section>
+					<h3>INFO 3402: Information Exposition</h3>
+					<p style="color:#CFB87C; font-weight:bold;">Brian Keegan & Abram Handler</p>
+					<p style="color:#565A5C">Week 11: March 22–26 2021</h5>
+				</section>
+
+				<!-- This is the second slide. -->
+				<section>
+					<h3>Outline for today</h3>
+					<ul>
+						<li>Administrivia</li>
+						<li>Introduction to <a href="https://revealjs.com/">Reveal.js</a></li>
+						<li>Setup: Local hosting <i>vs</i>. Content Delivery Networks</li>
+						<li>Walkthrough: Editing a Reveal.js presentation</li>
+						<li>Hack and Tell: Add functionality</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Administrivia</h3>
+					<p>Weekly Assignment check-in</p>
+					<p>Updating Chart.js with data from Python</p>
+				</section>
+
+				<section>
+					<h3>What is Reveal.js?</h3>
+					<p>Check out the <a href="https://revealjs.com/?demo">Demo</a></p>
+				</section>
+
+				<section>
+					<h3>Setting up Reveal.js with a CDN</h3>
+					<p>The Reveal.js installation documentation recommends a "local hosting" setup</p>
+					<p>A local hosting setup requires you to maintain and serve the Reveal.js files yourself</p>
+					<img class="fragment" src="https://media.giphy.com/media/yBnI9iojWdID6/giphy.gif" width="480" height="200" frameBorder="0">
+				</section>
+
+				<section>
+					<h3>Setting up Reveal.js with a CDN</h3>
+					<p><a href="https://en.wikipedia.org/wiki/Content_delivery_network">Content Delivery Networks</a> (CDNs) host data like videos and software instead of your server</p>
+					<p>In addition to laziness and simplicity, this has benefits for speed, consistency, and security</p>
+					<img class="fragment" src="https://media.giphy.com/media/EDt1m8p5hqXG8/giphy.gif" width="480" height="264" frameBorder="0">
+				</section>
+
+				<section>
+					<h3>Setting up Reveal.js with a CDN</h3>
+					<p>Download the Reveal.js <a href="https://github.com/hakimel/reveal.js/blob/master/index.html">example template</a></p>
+					<p>Open in Sublime and look for CSS and JS assets</p>
+					<p>Note they have a <i>relative</i> rather than <i>absolute</i> path</p>
+					<pre><code data-trim data-noescape><script type="text/template">
+						<link rel="stylesheet" href="dist/reset.css">
+						<link rel="stylesheet" href="dist/reveal.css">
+						<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+					</script></code></pre>
+				</section>
+
+				<section>
+					<h3>Setting up Reveal.js with a CDN</h3>
+					<p>Replace these relative paths with links to CDN assets</p>
+					<p><a href="https://cdnjs.com/">CDNJS</a> is popular CDN for hosting JavaScript libraries</p>
+					<p>Find the <a href="https://cdnjs.com/libraries/reveal.js/4.1.0">Reveal.js 4.1.0 library</a> on CDNJS</p>
+					<p>Replace the relative <code>href</code> paths with the CDN paths for each CSS and JS asset:</p>
+					<pre><code data-trim data-noescape><script type="text/template">
+						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reset.min.css">
+						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.css">
+						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/theme/black.min.css" id="theme">
+					</script></code></pre>
+				</section>
+
+				<section>
+					<h3>Setting up Reveal.js with a CDN</h3>
+					<p>Inspect the entire example template file and replace <i>all</i> the CSS and JS assets with CDN links</p>
+					<p><code>.min.</code> means <a href="https://en.wikipedia.org/wiki/Minification_(programming)">minified</a> → condensed code</p>
+					<p><code>reveal.css</code> and <code>reveal.js</code> are different files!</p>
+					<img class="fragment" src="https://media.giphy.com/media/xGdvlOVSWaDvi/giphy.gif" width="360" height="270" frameBorder="0">
+				</section>
+
+				<section>
+					<h3>Editing a Reveal.js presentation</h3>
+					<p>Follow the <a href="https://revealjs.com/markup/">documentation</a></p>
+					<p>Each slide is a <code>section</code></p>
+					<pre><code data-trim data-noescape><script type="text/template">
+					<div class="reveal">
+						<div class="slides">
+							<!-- Two slides -->
+							<section>Slide 1</section>
+							<section>Slide 2</section>
+						</div>
+					</div>
+					</script></code></pre>
+				</section>
+
+				<section>
+					<h3>Editing a Reveal.js presentation</h3>
+					<p>You can use just about any HTML within a section</p>
+					<pre><code data-trim data-noescape><script type="text/template">
+						<h1>Big header</h1>
+						<p style="font-weight:bold;">Custom text styles</p>
+						<img src="http://gph.is/17AUbQQ">
+					</script></code></pre>
+				</section>
+
+				<section>
+					<h3>Hack & Tell</h3> 
+					<p>Make a slide with emojis:</p>
+					<h2>📈📉📊</h2>
+				</section>
+
+				<section>
+					<h3>Hack & Tell</h3> 
+					<p>Make a slide with an image:</p>
+					<img src="https://media.giphy.com/media/26hiry6BJRJkBplss/giphy.gif" width="480" height="330" frameBorder="0">
+				</section>
+
+				<section>
+					<h3>Hack & Tell</h3> 
+					<p>Make a slide with Markdown</p>
+				</section>
+
+				<section>
+					<h3>Hack & Tell</h3> 
+					<p>Make a slide with a code block:</p>
+					<pre><code data-trim data-noescape>
+						def addition(a+b):
+						    return a+b
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Hack & Tell</h3>
+					<p>Make a slide with animations:</p>
+						<p class="fragment strike" data-fragment-index="3">Appears last</p>
+						<p class="fragment highlight-red" data-fragment-index="1">Appears first</p>
+						<p class="fragment grow" data-fragment-index="2">Appears second</p>
+					</span>
+					
+				</section>
+
+				<section>
+					<h3>Hack & Tell</h3>
+					<p>Make a slide with math:</p>
+					\[\begin{aligned}
+					  x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+					  \end{aligned} \]
+				</section>
+
+				<section>
+				    <h3>Hack & Tell</h3>
+				    <p>Make a slide with an interactive visualization:</p>
+				</section>
+
+			</div>
+		</div>
+
+		<!-- Replace the defaults files with links from https://cdnjs.com/libraries/reveal.js/4.1.0 -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/notes/notes.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/markdown/markdown.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/highlight.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/math/math.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				slideNumber: true,
+				math: {
+				      mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+				      config: 'TeX-AMS_HTML-full',
+				      // pass other options into `MathJax.Hub.Config()`
+				      TeX: { Macros: { RR: "{\\bf R}" } }
+				  },
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>
